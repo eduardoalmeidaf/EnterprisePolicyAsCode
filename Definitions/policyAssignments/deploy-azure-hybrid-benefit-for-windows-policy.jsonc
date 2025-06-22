@@ -1,0 +1,27 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "/root",
+  "definitionEntry": {
+    "policyName": "d86abd05-97d4-4f90-abc0-8e6a589726c7",
+    "displayName": "Deploy Azure Hybrid Benefit for Windows"
+  },
+  "assignment": {
+    "name": "e853f3d70db04c28a0b42a40",
+    "displayName": "[RES-SOLO-1] Implantar o beneficio de licenciamento hibrido para Windwos (AHB)",
+    "description": ""
+  },
+  "metadata": {
+    "parameterScopes": {}
+  },
+  "overrides": [],
+  "resourceSelectors": [],
+  "scope": {
+    "epac-dev": [
+      "/subscriptions/47fae178-5515-4959-86d9-b5e380009545"
+    ]
+  },
+  "managedIdentityLocations": {
+    "epac-dev": "eastus2"
+  },
+  "definitionVersion": "1.*.*"
+}

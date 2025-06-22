@@ -1,0 +1,55 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "/root",
+  "definitionEntry": {
+    "policyId": "/providers/Microsoft.Authorization/policyDefinitions/96670d01-0a4d-4649-9c89-2d3abc0a5025",
+    "displayName": "Require a tag on resource groups"
+  },
+  "metadata": {
+    "parameterScopes": {}
+  },
+  "overrides": [],
+  "resourceSelectors": [],
+  "scope": {
+    "epac-dev": [
+      "/subscriptions/47fae178-5515-4959-86d9-b5e380009545"
+    ]
+  },
+  "definitionVersion": "1.0.*",
+  "children": [
+    {
+      "nodeName": "/child-0",
+      "assignment": {
+        "name": "020ae2f5071440298f1c68b8",
+        "displayName": "[TAG-SOLO-1] Exigir a tag [CC] nos grupos de recursos",
+        "description": ""
+      },
+      "parameters": {
+        "tagName": "CC"
+      },
+      "nonComplianceMessages": [
+        {
+          "policyDefinitionReferenceId": null,
+          "message": "A tag CC não está definida no grupo de recursos."
+        }
+      ]
+    },
+    {
+      "nodeName": "/child-1",
+      "assignment": {
+        "name": "ed60d2c41b874f1480ae63c5",
+        "displayName": "[TAG-SOLO-2] Exigir a tag [VERTICAL] nos grupos de recursos",
+        "description": ""
+      },
+      "parameters": {
+        "tagName": "VERTICAL"
+      },
+      "nonComplianceMessages": [
+        {
+          "policyDefinitionReferenceId": null,
+          "message": "A tag [VERTICAL] não está definida no grupo de recursos."
+        }
+      ]
+    }
+  ]
+}

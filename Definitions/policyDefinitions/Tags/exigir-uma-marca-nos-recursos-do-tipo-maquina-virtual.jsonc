@@ -1,0 +1,50 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-definition-schema.json",
+  "name": "f9e83278-881c-4918-9bff-c9ccfc9fcd7d",
+  "properties": {
+    "displayName": "Exigir uma marca nos recursos do tipo maquina virtual",
+    "description": "Aplica a existência de uma marca. Não se aplica a grupos de recursos.",
+    "mode": "Indexed",
+    "metadata": {
+      "category": "Tags"
+    },
+    "parameters": {
+      "tagName": {
+        "metadata": {
+          "description": "Nome da marca, por exemplo, 'ambiente'",
+          "displayName": "Nome da Marca"
+        },
+        "type": "String"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Compute/virtualMachines"
+          },
+          {
+            "field": "id",
+            "notContains": "/resourceGroups/databricks-rg-"
+          },
+          {
+            "field": "Microsoft.Compute/imagePublisher",
+            "notEquals": "azureopenshift"
+          },
+          {
+            "field": "Microsoft.Compute/imagePublisher",
+            "notEquals": "AzureDatabricks"
+          },
+          {
+            "field": "[concat('tags[', parameters('tagName'), ']')]",
+            "exists": "false"
+          }
+        ]
+      },
+      "then": {
+        "effect": "deny"
+      }
+    }
+  }
+}

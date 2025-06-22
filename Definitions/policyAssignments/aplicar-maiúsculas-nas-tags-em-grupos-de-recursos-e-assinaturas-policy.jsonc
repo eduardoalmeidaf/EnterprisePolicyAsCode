@@ -1,0 +1,30 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "/root",
+  "definitionEntry": {
+    "policyName": "053890dc-9ab4-463b-8ef1-f9ff52edf39e",
+    "displayName": "Aplicar maiúsculas nas tags em grupos de recursos e assinaturas"
+  },
+  "assignment": {
+    "name": "5104b93e9c2549de892092e6",
+    "displayName": "[TAG-SOLO-7] Aplicar maiúsculas nas tags em grupos de recursos e assinaturas",
+    "description": ""
+  },
+  "metadata": {
+    "parameterScopes": {}
+  },
+  "parameters": {
+    "toLowerOrToUpper": "Uppercase"
+  },
+  "overrides": [],
+  "resourceSelectors": [],
+  "scope": {
+    "epac-dev": [
+      "/subscriptions/47fae178-5515-4959-86d9-b5e380009545"
+    ]
+  },
+  "managedIdentityLocations": {
+    "epac-dev": "eastus2"
+  },
+  "definitionVersion": "1.*.*"
+}

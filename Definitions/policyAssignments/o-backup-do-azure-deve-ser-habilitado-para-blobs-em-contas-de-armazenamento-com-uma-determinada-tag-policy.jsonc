@@ -1,0 +1,28 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "/root",
+  "definitionEntry": {
+    "policyName": "c5a891d4-637d-4c19-b354-d893b3c6270d",
+    "displayName": "O Backup do Azure deve ser habilitado para Blobs em Contas de Armazenamento com uma determinada tag"
+  },
+  "assignment": {
+    "name": "69c61ca91f01401cb61890bd",
+    "displayName": "[BKP-SOLO-2] O Backup do Azure deve ser habilitado para Blobs em Contas de Armazenamento com uma determinada tag",
+    "description": ""
+  },
+  "metadata": {
+    "parameterScopes": {}
+  },
+  "parameters": {
+    "tagValue": "SIM",
+    "tagName": "BACKUP"
+  },
+  "overrides": [],
+  "resourceSelectors": [],
+  "scope": {
+    "epac-dev": [
+      "/subscriptions/47fae178-5515-4959-86d9-b5e380009545"
+    ]
+  },
+  "definitionVersion": "1.*.*"
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "/root",
+  "definitionEntry": {
+    "policyId": "/providers/Microsoft.Authorization/policyDefinitions/bd876905-5b84-4f73-ab2d-2e7a7c4568d9",
+    "displayName": "Machines should be configured to periodically check for missing system updates"
+  },
+  "assignment": {
+    "name": "1892947ec9604dc18d1bb88e",
+    "displayName": "Machines should be configured to periodically check for missing system updates",
+    "description": ""
+  },
+  "metadata": {
+    "parameterScopes": {}
+  },
+  "overrides": [],
+  "resourceSelectors": [],
+  "scope": {
+    "epac-dev": [
+      "/subscriptions/47fae178-5515-4959-86d9-b5e380009545"
+    ]
+  },
+  "definitionVersion": "3.7.*"
+}

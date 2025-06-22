@@ -1,0 +1,57 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "/root",
+  "definitionEntry": {
+    "policyId": "/providers/Microsoft.Authorization/policyDefinitions/ea3f2387-9b95-492a-a190-fcdc54f7b070",
+    "displayName": "Inherit a tag from the resource group if missing"
+  },
+  "metadata": {
+    "parameterScopes": {}
+  },
+  "overrides": [],
+  "resourceSelectors": [],
+  "scope": {
+    "epac-dev": [
+      "/subscriptions/47fae178-5515-4959-86d9-b5e380009545"
+    ]
+  },
+  "managedIdentityLocations": {
+    "epac-dev": "eastus2"
+  },
+  "definitionVersion": "1.0.*",
+  "children": [
+    {
+      "nodeName": "/child-0",
+      "assignment": {
+        "name": "3c56368ae8d44fda8bf4fb40",
+        "displayName": "[TAG-SOLO-5] Herdar a tag [CC] do grupo de recursos, se ela estiver ausente",
+        "description": ""
+      },
+      "parameters": {
+        "tagName": "CC"
+      }
+    },
+    {
+      "nodeName": "/child-1",
+      "assignment": {
+        "name": "4333dc590cad4282b6c5eede",
+        "displayName": "[TAG-SOLO-4] Herdar a tag [VERTICAL] do grupo de recursos, se ela estiver ausente",
+        "description": ""
+      },
+      "parameters": {
+        "tagName": "VERTICAL"
+      }
+    },
+    {
+      "nodeName": "/child-2",
+      "assignment": {
+        "name": "9e575b0cb4194e6eab0d0568",
+        "displayName": "[TAG-SOLO-6] Herdar a tag [AMBIENTE] do grupo de recursos, se ela estiver ausente",
+        "description": ""
+      },
+      "parameters": {
+        "tagName": "AMBIENTE"
+      }
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-set-definition-schema.json",
+  "name": "d53109a4872d4666bf42647f",
+  "properties": {
+    "displayName": "Padronização de tags",
+    "metadata": {
+      "category": "Tags"
+    },
+    "parameters": {},
+    "policyDefinitions": [
+      {
+        "policyDefinitionReferenceId": "Herdar uma marca do grupo de recursos, se ela estiver ausente_1",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ea3f2387-9b95-492a-a190-fcdc54f7b070",
+        "parameters": {
+          "tagName": {
+            "value": "AMBIENTE;CC;VERTICAL"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Exigir uma marca nos grupos de recursos_1",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/96670d01-0a4d-4649-9c89-2d3abc0a5025",
+        "parameters": {
+          "tagName": {
+            "value": "AMBIENTE;CC;VERTICAL"
+          }
+        }
+      }
+    ],
+    "policyDefinitionGroups": []
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "/root",
+  "definitionEntry": {
+    "policyName": "eea38661-0b4c-4967-8673-31f2d7f35686",
+    "displayName": "Exigir uma tag em Maquinas Virtuais com base no valor de uma outra tag"
+  },
+  "assignment": {
+    "name": "90c4cce3180347e58da57f6c",
+    "displayName": "[TAG-SOLO-13] Exigir as tags [START] e [STOP] se a máquina virtual for de disponibilidade parcial",
+    "description": ""
+  },
+  "metadata": {
+    "parameterScopes": {}
+  },
+  "parameters": {
+    "tagName3": "STOP",
+    "tagName1": "DISPONIBILIDADE",
+    "tagValue1": "PARCIAL",
+    "tagName2": "START"
+  },
+  "overrides": [],
+  "resourceSelectors": [],
+  "scope": {
+    "epac-dev": [
+      "/subscriptions/47fae178-5515-4959-86d9-b5e380009545"
+    ]
+  },
+  "definitionVersion": "1.*.*"
+}

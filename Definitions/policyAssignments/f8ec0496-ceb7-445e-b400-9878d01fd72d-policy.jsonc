@@ -1,0 +1,30 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "/root",
+  "definitionEntry": {
+    "policyName": "f8ec0496-ceb7-445e-b400-9878d01fd72d",
+    "displayName": null,
+    "nonComplianceMessages": [
+      {
+        "policyDefinitionReferenceId": null,
+        "message": "nao pode criar sku basic"
+      }
+    ]
+  },
+  "assignment": {
+    "name": "0d29e7bb99104f1bb279babe",
+    "displayName": "Deny IP sku basic",
+    "description": ""
+  },
+  "metadata": {
+    "parameterScopes": {}
+  },
+  "overrides": [],
+  "resourceSelectors": [],
+  "scope": {
+    "epac-dev": [
+      "/subscriptions/47fae178-5515-4959-86d9-b5e380009545"
+    ]
+  },
+  "definitionVersion": "1.*.*"
+}

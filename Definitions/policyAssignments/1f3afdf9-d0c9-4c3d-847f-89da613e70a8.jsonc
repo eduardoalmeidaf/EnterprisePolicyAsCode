@@ -1,0 +1,24 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "/Security/",
+  "definitionEntry": {
+    "policySetName": "1f3afdf9-d0c9-4c3d-847f-89da613e70a8"
+  },
+  "children": [
+    {
+      "nodeName": "EPAC-Dev",
+      "assignment": {
+        "name": "066dcacee5a9",
+        "displayName": "",
+        "description": ""
+      },
+      "enforcementMode": "Default",
+      "parameters": {},
+      "scope": {
+        "EPAC-Dev": [
+          "/providers/Microsoft.Management/managementGroups/mg_mycompany"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "/root",
+  "definitionEntry": {
+    "policySetId": "/providers/Microsoft.Authorization/policySetDefinitions/12794019-7a00-42cf-95c2-882eed337cc8",
+    "displayName": "Deploy prerequisites to enable Guest Configuration policies on virtual machines"
+  },
+  "assignment": {
+    "name": "7b585d4e74ff41f0872c7ee1",
+    "displayName": "[INI-SOLO-1] Implantar pré-requisitos para habilitar as políticas de Configuração de Convidado em máquinas virtuais",
+    "description": ""
+  },
+  "metadata": {
+    "parameterScopes": {}
+  },
+  "overrides": [],
+  "resourceSelectors": [],
+  "scope": {
+    "epac-dev": [
+      "/subscriptions/47fae178-5515-4959-86d9-b5e380009545"
+    ]
+  },
+  "managedIdentityLocations": {
+    "epac-dev": "eastus2"
+  },
+  "definitionVersion": "1.*.*"
+}

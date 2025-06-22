@@ -1,0 +1,117 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-definition-schema.json",
+  "name": "d86abd05-97d4-4f90-abc0-8e6a589726c7",
+  "properties": {
+    "displayName": "Deploy Azure Hybrid Benefit for Windows",
+    "description": "This policy ensures virtual machines are configured for Azure Hybrid Benefit for Windows Client and Server",
+    "mode": "Indexed",
+    "metadata": {
+      "category": "Compute"
+    },
+    "parameters": {
+      "effect": {
+        "allowedValues": [
+          "DeployIfNotExists",
+          "AuditIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "DeployIfNotExists",
+        "metadata": {
+          "description": "DeployIfNotExists, AuditIfNotExists or Disabled the execution of the Policy",
+          "displayName": "Effect"
+        },
+        "type": "String"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Compute/virtualMachines"
+          },
+          {
+            "field": "Microsoft.Compute/imagePublisher",
+            "in": [
+              "MicrosoftWindowsServer",
+              "MicrosoftWindowsDesktop"
+            ]
+          },
+          {
+            "field": "Microsoft.Compute/imageOffer",
+            "in": [
+              "WindowsServer",
+              "Windows-10"
+            ]
+          }
+        ]
+      },
+      "then": {
+        "effect": "[parameters('effect')]",
+        "details": {
+          "type": "Microsoft.Compute/virtualMachines",
+          "existenceCondition": {
+            "allOf": [
+              {
+                "field": "Microsoft.Compute/virtualMachines/licenseType",
+                "equals": "[if(equals(field('Microsoft.Compute/imagePublisher'), 'MicrosoftWindowsDesktop'), 'Windows_Client', 'Windows_Server')]"
+              }
+            ]
+          },
+          "roleDefinitionIds": [
+            "/providers/Microsoft.Authorization/roleDefinitions/9980e02c-c2be-4d73-94e8-173b1dc7cf3c"
+          ],
+          "deployment": {
+            "properties": {
+              "parameters": {
+                "vmName": {
+                  "value": "[field('name')]"
+                },
+                "licenceType": {
+                  "value": "[if(equals(field('Microsoft.Compute/imagePublisher'), 'MicrosoftWindowsDesktop'), 'Windows_Client', 'Windows_Server')]"
+                }
+              },
+              "mode": "incremental",
+              "template": {
+                "parameters": {
+                  "vmName": {
+                    "type": "String"
+                  },
+                  "licenceType": {
+                    "allowedValues": [
+                      "None",
+                      "Windows_Client",
+                      "Windows_Server"
+                    ],
+                    "defaultValue": "None",
+                    "type": "String"
+                  }
+                },
+                "contentVersion": "1.0.0.0",
+                "resources": [
+                  {
+                    "type": "Microsoft.Compute/virtualMachines",
+                    "properties": {
+                      "licenseType": "[parameters('licenceType')]"
+                    },
+                    "location": "[resourceGroup().location]",
+                    "apiVersion": "2021-03-01",
+                    "name": "[parameters('vmName')]"
+                  }
+                ],
+                "variables": {},
+                "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                "outputs": {
+                  "policy": {
+                    "type": "string",
+                    "value": "[concat('Changed LicenseType for Windows VM', ': ', parameters('vmName'), '- ', parameters('licenceType'))]"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

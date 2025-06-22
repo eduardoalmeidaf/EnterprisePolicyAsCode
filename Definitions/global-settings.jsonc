@@ -1,0 +1,41 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/global-settings-schema.json",
+  "telemetryOptOut": true,
+  "pacOwnerId": "2e0f33c1-6686-481c-8fa3-29399abf75ff",
+  "pacEnvironments": [
+    {
+      "pacSelector": "tenant",
+      "cloud": "AzureCloud",
+      "tenantId": "bc490c3d-f589-4f07-85e9-2464a7a054f2",
+      "deploymentRootScope": "/providers/Microsoft.Management/managementGroups/mg_mycompany",
+      "desiredState": {
+        "excludedPolicySetDefinitions": [],
+        "excludedScopes": [],
+        "strategy": "ownedOnly",
+        "keepDfcSecurityAssignments": false,
+        "excludedPolicyAssignments": [],
+        "excludedPolicyDefinitions": []
+      },
+      "globalNotScopes": [
+        "/providers/Microsoft.Management/managementGroups/epac-mg_mycompany"
+      ],
+      "managedIdentityLocation": "brazilsouth"
+    },
+    {
+      "pacSelector": "epac-dev",
+      "cloud": "AzureCloud",
+      "tenantId": "bc490c3d-f589-4f07-85e9-2464a7a054f2",
+      "deploymentRootScope": "/providers/Microsoft.Management/managementGroups/epac-mg_mycompany",
+      "desiredState": {
+        "excludedPolicySetDefinitions": [],
+        "excludedScopes": [],
+        "strategy": "ownedOnly",
+        "keepDfcSecurityAssignments": false,
+        "excludedPolicyAssignments": [],
+        "excludedPolicyDefinitions": []
+      },
+      "globalNotScopes": [],
+      "managedIdentityLocation": "brazilsouth"
+    }
+  ]
+}

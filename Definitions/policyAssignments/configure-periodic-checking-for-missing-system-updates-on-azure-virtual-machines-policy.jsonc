@@ -1,0 +1,40 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "/root",
+  "definitionEntry": {
+    "policyId": "/providers/Microsoft.Authorization/policyDefinitions/59efceea-0c96-497e-a4a1-4eb2290dac15",
+    "displayName": "Configure periodic checking for missing system updates on azure virtual machines"
+  },
+  "metadata": {
+    "parameterScopes": {}
+  },
+  "overrides": [],
+  "resourceSelectors": [],
+  "scope": {
+    "epac-dev": [
+      "/subscriptions/47fae178-5515-4959-86d9-b5e380009545"
+    ]
+  },
+  "managedIdentityLocations": {
+    "epac-dev": "eastus2"
+  },
+  "definitionVersion": "4.8.*",
+  "children": [
+    {
+      "nodeName": "/child-0",
+      "assignment": {
+        "name": "610add3e7548410fb2ea0f1f",
+        "displayName": "Configure periodic checking for missing system updates on azure virtual machines",
+        "description": ""
+      }
+    },
+    {
+      "nodeName": "/child-1",
+      "assignment": {
+        "name": "0e380ce13a7242e9a6dfaede",
+        "displayName": "Configure periodic checking for missing system updates on azure virtual machines",
+        "description": ""
+      }
+    }
+  ]
+}

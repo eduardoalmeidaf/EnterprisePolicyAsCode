@@ -1,0 +1,32 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "/root",
+  "definitionEntry": {
+    "policyId": "/providers/Microsoft.Authorization/policyDefinitions/9905ca54-1471-49c6-8291-7582c04cd4d4",
+    "displayName": "Set prerequisite for Scheduling recurring updates on Azure virtual machines."
+  },
+  "assignment": {
+    "name": "5f871d3fe6204c63ab031962",
+    "displayName": "[Preview]: Set prerequisite for Scheduling recurring updates on Azure virtual machines.",
+    "description": ""
+  },
+  "metadata": {
+    "parameterScopes": {}
+  },
+  "parameters": {
+    "operatingSystemTypes": [
+      "Windows"
+    ]
+  },
+  "overrides": [],
+  "resourceSelectors": [],
+  "scope": {
+    "epac-dev": [
+      "/subscriptions/47fae178-5515-4959-86d9-b5e380009545"
+    ]
+  },
+  "managedIdentityLocations": {
+    "epac-dev": "eastus2"
+  },
+  "definitionVersion": "1.1.*-preview"
+}

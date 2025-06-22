@@ -1,0 +1,89 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "/root",
+  "definitionEntry": {
+    "policyName": "929a87a7-c694-466a-989e-d77aa3304da5",
+    "displayName": "Exigir uma tag e um valor de um conjunto de valores aceitos em maquinas virtuais"
+  },
+  "metadata": {
+    "parameterScopes": {}
+  },
+  "overrides": [],
+  "resourceSelectors": [],
+  "scope": {
+    "epac-dev": [
+      "/subscriptions/47fae178-5515-4959-86d9-b5e380009545"
+    ]
+  },
+  "definitionVersion": "1.*.*",
+  "children": [
+    {
+      "nodeName": "/child-0",
+      "assignment": {
+        "name": "e1177bb20711474bbaf3aee8",
+        "displayName": "[TAG-SOLO-8] Exigir a tag [WAVE] e um valor de um conjunto de valores aceitos em maquinas virtuais",
+        "description": ""
+      },
+      "parameters": {
+        "allowedTagValues": [
+          "WAVE1",
+          "WAVE2",
+          "WAVE3",
+          "WAVEPIX1",
+          "WAVEPIX2",
+          "WAVESIMPLY1",
+          "WAVESIMPLY2",
+          "WAVESCAF1",
+          "WAVESCAF2",
+          "WAFESCAF3",
+          "ENDOFLIFE",
+          "LINUX",
+          "WAVEAD"
+        ],
+        "tagName": "WAVE"
+      },
+      "nonComplianceMessages": [
+        {
+          "policyDefinitionReferenceId": null,
+          "message": "O valor da tag [WAVE] não corresponde a uma das opções: WAVE1, WAVE2, WAVE3, WAVEPIX1, WAVEPIX2, WAVESIMPLY1, WAVESIMPLY2, WAVESCAF1, WAVESCAF2, WAVESCAF3, ENDOFLIFE, LINUX, WAVEAD."
+        }
+      ]
+    },
+    {
+      "nodeName": "/child-1",
+      "assignment": {
+        "name": "16592e51366040f98c35f238",
+        "displayName": "[TAG-SOLO-12] Exigir a tag [DISPONIBILIDADE] e um valor de um conjunto de valores aceitos em maquinas virtuais",
+        "description": ""
+      },
+      "parameters": {
+        "allowedTagValues": [
+          "PARCIAL",
+          "FULL-TIME"
+        ],
+        "tagName": "DISPONIBILIDADE"
+      }
+    },
+    {
+      "nodeName": "/child-2",
+      "assignment": {
+        "name": "9d0e60a40ae64482921b08ad",
+        "displayName": "[TAG-SOLO-9] Exigir a tag [BACKUP] nos recursos do tipo maquina virtual",
+        "description": ""
+      },
+      "parameters": {
+        "allowedTagValues": [
+          "SIM",
+          "NAO"
+        ],
+        "tagName": "BACKUP"
+      },
+      "nonComplianceMessages": [
+        {
+          "policyDefinitionReferenceId": null,
+          "message": "O valor da tag [BACKUP] não corresponde a uma das opções: SIM ou NAO"
+        }
+      ]
+    }
+  ]
+}

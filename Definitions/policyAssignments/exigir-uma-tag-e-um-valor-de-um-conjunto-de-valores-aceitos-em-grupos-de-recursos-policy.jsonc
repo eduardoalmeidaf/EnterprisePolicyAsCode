@@ -1,0 +1,43 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "/root",
+  "definitionEntry": {
+    "policyName": "fc26529a-bab4-4a65-a1f5-556159d906d0",
+    "displayName": "Exigir uma tag e um valor de um conjunto de valores aceitos em Grupos de Recursos",
+    "nonComplianceMessages": [
+      {
+        "policyDefinitionReferenceId": null,
+        "message": "O valor da tag não corresponde a um dos valores aceitos: PRD, HML, DEV, QA, WVD, POC, DEVOPS, SHELF;"
+      }
+    ]
+  },
+  "assignment": {
+    "name": "18d2d887d993494f8624647b",
+    "displayName": "[TAG-SOLO-3] Exigir a tag [AMBIENTE] e um valor de um conjunto de valores aceitos em Grupos de Recursos",
+    "description": ""
+  },
+  "metadata": {
+    "parameterScopes": {}
+  },
+  "parameters": {
+    "allowedTagValues": [
+      "PRD",
+      "HML",
+      "DEV",
+      "QA",
+      "WVD",
+      "POC",
+      "DEVOPS",
+      "SHELF"
+    ],
+    "tagName": "AMBIENTE"
+  },
+  "overrides": [],
+  "resourceSelectors": [],
+  "scope": {
+    "epac-dev": [
+      "/subscriptions/47fae178-5515-4959-86d9-b5e380009545"
+    ]
+  },
+  "definitionVersion": "1.*.*"
+}

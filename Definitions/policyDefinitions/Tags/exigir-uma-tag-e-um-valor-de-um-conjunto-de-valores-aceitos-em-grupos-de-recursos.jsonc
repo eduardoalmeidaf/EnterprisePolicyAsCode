@@ -1,0 +1,44 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-definition-schema.json",
+  "name": "fc26529a-bab4-4a65-a1f5-556159d906d0",
+  "properties": {
+    "displayName": "Exigir uma tag e um valor de um conjunto de valores aceitos em Grupos de Recursos",
+    "mode": "All",
+    "metadata": {
+      "category": "Tags"
+    },
+    "parameters": {
+      "tagName": {
+        "metadata": {
+          "description": "Nome da tag",
+          "displayName": "Nome da Tag"
+        },
+        "type": "String"
+      },
+      "allowedTagValues": {
+        "metadata": {
+          "description": "Lista de valores permitidos para a tag",
+          "displayName": "Valores Permitidos para a Tag"
+        },
+        "type": "Array"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Resources/subscriptions/resourceGroups"
+          },
+          {
+            "field": "[concat('tags[', parameters('tagName'), ']')]",
+            "notIn": "[parameters('allowedTagValues')]"
+          }
+        ]
+      },
+      "then": {
+        "effect": "deny"
+      }
+    }
+  }
+}

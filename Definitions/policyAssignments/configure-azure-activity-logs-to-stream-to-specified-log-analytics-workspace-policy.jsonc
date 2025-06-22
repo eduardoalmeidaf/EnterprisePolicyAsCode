@@ -1,0 +1,33 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "/root",
+  "definitionEntry": {
+    "policyId": "/providers/Microsoft.Authorization/policyDefinitions/2465583e-4e78-4c15-b6be-a36cbc7c8b0f",
+    "displayName": "Configure Azure Activity logs to stream to specified Log Analytics workspace"
+  },
+  "assignment": {
+    "name": "7b5a3e7dba4f497da476e9b9",
+    "displayName": "Configure Azure Activity logs to stream to specified Log Analytics workspace",
+    "description": ""
+  },
+  "metadata": {
+    "assignedBy": "Eduardo Almeida",
+    "parameterScopes": {
+      "logAnalytics": "/subscriptions/47fae178-5515-4959-86d9-b5e380009545"
+    }
+  },
+  "parameters": {
+    "logAnalytics": "/subscriptions/47fae178-5515-4959-86d9-b5e380009545/resourcegroups/sentinel-rg/providers/microsoft.operationalinsights/workspaces/sentinelloganalytics"
+  },
+  "overrides": [],
+  "resourceSelectors": [],
+  "scope": {
+    "epac-dev": [
+      "/subscriptions/47fae178-5515-4959-86d9-b5e380009545"
+    ]
+  },
+  "managedIdentityLocations": {
+    "epac-dev": "eastus"
+  },
+  "definitionVersion": "1.*.*"
+}

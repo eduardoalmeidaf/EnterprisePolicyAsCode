@@ -1,0 +1,72 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-definition-schema.json",
+  "name": "a1c78328-8354-41fa-8d92-7f4765ecd411",
+  "properties": {
+    "displayName": "O Backup do Azure deve ser habilitado para as Máquinas Virtuais com uma determinada tag",
+    "description": "Verifique a proteção das suas Máquinas Virtuais do Azure habilitando o Backup do Azure. O Backup do Azure é uma solução de proteção de dados segura e econômica para o Azure.",
+    "mode": "Indexed",
+    "metadata": {
+      "category": "Backup"
+    },
+    "parameters": {
+      "effect": {
+        "allowedValues": [
+          "AuditIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "AuditIfNotExists",
+        "metadata": {
+          "description": "Habilitar ou desabilitar a execução da política",
+          "displayName": "Efeito"
+        },
+        "type": "String"
+      },
+      "tagName": {
+        "metadata": {
+          "description": "Name of the tag, such as 'BackupGroup'",
+          "displayName": "Tag Name"
+        },
+        "type": "String"
+      },
+      "tagValue": {
+        "metadata": {
+          "description": "Value of the tag, such as 'Group1'",
+          "displayName": "Tag Value"
+        },
+        "type": "String"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Compute/virtualMachines"
+          },
+          {
+            "field": "id",
+            "notContains": "/resourceGroups/databricks-rg-"
+          },
+          {
+            "field": "Microsoft.Compute/imagePublisher",
+            "notEquals": "azureopenshift"
+          },
+          {
+            "field": "Microsoft.Compute/imagePublisher",
+            "notEquals": "AzureDatabricks"
+          },
+          {
+            "field": "[concat('tags[', parameters('tagName'), ']')]",
+            "equals": "[parameters('tagValue')]"
+          }
+        ]
+      },
+      "then": {
+        "effect": "[parameters('effect')]",
+        "details": {
+          "type": "Microsoft.RecoveryServices/backupprotecteditems"
+        }
+      }
+    }
+  }
+}

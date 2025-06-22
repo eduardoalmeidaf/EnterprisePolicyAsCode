@@ -1,0 +1,22 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "/root",
+  "definitionEntry": {
+    "policySetId": "/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8",
+    "displayName": "Microsoft cloud security benchmark"
+  },
+  "assignment": {
+    "name": "SecurityCenterBuiltIn",
+    "displayName": "ASC Default (subscription: 47fae178-5515-4959-86d9-b5e380009545)",
+    "description": "This is the default set of policies monitored by Azure Security Center. It was automatically assigned as part of onboarding to Security Center. The default assignment contains only audit policies. For more information please visit https://aka.ms/ascpolicies"
+  },
+  "metadata": {
+    "assignedBy": "Security Center"
+  },
+  "scope": {
+    "epac-dev": [
+      "/subscriptions/47fae178-5515-4959-86d9-b5e380009545"
+    ]
+  },
+  "definitionVersion": "57.*.*"
+}

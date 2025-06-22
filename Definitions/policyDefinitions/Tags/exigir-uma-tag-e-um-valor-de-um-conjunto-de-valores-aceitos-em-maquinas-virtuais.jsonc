@@ -1,0 +1,56 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-definition-schema.json",
+  "name": "929a87a7-c694-466a-989e-d77aa3304da5",
+  "properties": {
+    "displayName": "Exigir uma tag e um valor de um conjunto de valores aceitos em maquinas virtuais",
+    "mode": "All",
+    "metadata": {
+      "category": "Tags"
+    },
+    "parameters": {
+      "tagName": {
+        "metadata": {
+          "description": "Nome da tag",
+          "displayName": "Nome da Tag"
+        },
+        "type": "String"
+      },
+      "allowedTagValues": {
+        "metadata": {
+          "description": "Lista de valores permitidos para a tag",
+          "displayName": "Valores Permitidos para a Tag"
+        },
+        "type": "Array"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Compute/virtualMachines"
+          },
+          {
+            "field": "id",
+            "notContains": "/resourceGroups/databricks-rg-"
+          },
+          {
+            "field": "Microsoft.Compute/imagePublisher",
+            "notEquals": "azureopenshift"
+          },
+          {
+            "field": "Microsoft.Compute/imagePublisher",
+            "notEquals": "AzureDatabricks"
+          },
+          {
+            "field": "[concat('tags[', parameters('tagName'), ']')]",
+            "notIn": "[parameters('allowedTagValues')]"
+          }
+        ]
+      },
+      "then": {
+        "effect": "deny"
+      }
+    }
+  }
+}

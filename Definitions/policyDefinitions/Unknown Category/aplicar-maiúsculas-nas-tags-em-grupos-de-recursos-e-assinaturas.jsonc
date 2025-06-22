@@ -1,0 +1,74 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-definition-schema.json",
+  "name": "053890dc-9ab4-463b-8ef1-f9ff52edf39e",
+  "properties": {
+    "displayName": "Aplicar maiúsculas nas tags em grupos de recursos e assinaturas",
+    "description": "Esta política é utilizada para converter todas as tags de um grupo de recursos em maiúsculas.",
+    "mode": "All",
+    "metadata": {},
+    "parameters": {
+      "effect": {
+        "allowedValues": [
+          "Modify",
+          "Deny",
+          "Audit",
+          "Disabled"
+        ],
+        "defaultValue": "Modify",
+        "metadata": {
+          "description": "Modify, Deny, Audit or Disabled the execution of the Policy",
+          "displayName": "Effect"
+        },
+        "type": "String"
+      },
+      "toLowerOrToUpper": {
+        "allowedValues": [
+          "Lowercase",
+          "Uppercase"
+        ],
+        "metadata": {
+          "description": "If set to lowercase then the Policy will convert all tags on existing and new resources to lowercase. Uppercase will convert them to uppercase.",
+          "displayName": "Enforce lowercase or uppercase"
+        },
+        "type": "String"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "anyOf": [
+              {
+                "field": "type",
+                "equals": "Microsoft.Resources/subscriptions"
+              },
+              {
+                "field": "type",
+                "equals": "Microsoft.Resources/subscriptions/resourceGroups"
+              }
+            ]
+          },
+          {
+            "field": "tags",
+            "exists": true
+          }
+        ]
+      },
+      "then": {
+        "effect": "[parameters('effect')]",
+        "details": {
+          "roleDefinitionIds": [
+            "/providers/microsoft.authorization/roleDefinitions/4a9ae827-6dc8-4573-8ac7-8239d42aa03f"
+          ],
+          "operations": [
+            {
+              "field": "tags",
+              "value": "[json(if(equals(parameters('toLowerOrToUpper'), 'Lowercase'), toLower(string(field('tags'))),toUpper(string(field('tags')))))]",
+              "operation": "addOrReplace"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

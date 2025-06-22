@@ -1,0 +1,22 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "/root",
+  "definitionEntry": {
+    "policySetId": "/providers/Microsoft.Authorization/policySetDefinitions/9cb3cc7a-b39b-4b82-bc89-e5a5d9ff7b97",
+    "displayName": "Configure Azure Defender to be enabled on SQL Servers and SQL Managed Instances"
+  },
+  "assignment": {
+    "name": "DataProtectionSecurityCenter",
+    "displayName": "ASC DataProtection (subscription: 47fae178-5515-4959-86d9-b5e380009545)",
+    "description": "This policy assignment was automatically created by Azure Security Center"
+  },
+  "metadata": {
+    "assignedBy": "Security Center"
+  },
+  "scope": {
+    "epac-dev": [
+      "/subscriptions/47fae178-5515-4959-86d9-b5e380009545"
+    ]
+  },
+  "definitionVersion": "3.*.*"
+}

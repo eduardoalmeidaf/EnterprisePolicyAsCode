@@ -1,0 +1,82 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-definition-schema.json",
+  "name": "eea38661-0b4c-4967-8673-31f2d7f35686",
+  "properties": {
+    "displayName": "Exigir uma tag em Maquinas Virtuais com base no valor de uma outra tag",
+    "mode": "Indexed",
+    "metadata": {
+      "category": "Tags"
+    },
+    "parameters": {
+      "tagName2": {
+        "metadata": {
+          "description": "Nome da TAG a ser verificada a existência, caso o valor da tag principal de match",
+          "displayName": "Nome da TAG2"
+        },
+        "type": "String"
+      },
+      "tagName1": {
+        "metadata": {
+          "description": "Nome da TAG principal",
+          "displayName": "Nome da TAG1"
+        },
+        "type": "String"
+      },
+      "tagName3": {
+        "metadata": {
+          "description": "Nome da TAG a ser verificada a existência, caso o valor da tag principal de match",
+          "displayName": "Nome da TAG3"
+        },
+        "type": "String"
+      },
+      "tagValue1": {
+        "metadata": {
+          "description": "Valor da tag principal",
+          "displayName": "Valor da TAG1"
+        },
+        "type": "String"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Compute/virtualMachines"
+          },
+          {
+            "field": "id",
+            "notContains": "/resourceGroups/databricks-rg-"
+          },
+          {
+            "field": "Microsoft.Compute/imagePublisher",
+            "notEquals": "azureopenshift"
+          },
+          {
+            "field": "Microsoft.Compute/imagePublisher",
+            "notEquals": "AzureDatabricks"
+          },
+          {
+            "field": "[concat('tags[', parameters('tagName1'), ']')]",
+            "equals": "[parameters('tagValue1')]"
+          },
+          {
+            "anyOf": [
+              {
+                "field": "[concat('tags[', parameters('tagName2'), ']')]",
+                "exists": "false"
+              },
+              {
+                "field": "[concat('tags[', parameters('tagName3'), ']')]",
+                "exists": "false"
+              }
+            ]
+          }
+        ]
+      },
+      "then": {
+        "effect": "deny"
+      }
+    }
+  }
+}

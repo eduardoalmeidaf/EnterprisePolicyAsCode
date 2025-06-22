@@ -1,0 +1,30 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "/root",
+  "definitionEntry": {
+    "policyName": "aa72d442-1916-45e1-95b4-8cdfe3db1850",
+    "displayName": "Exigir o uso do beneficio do licenciamento hibrido",
+    "nonComplianceMessages": [
+      {
+        "policyDefinitionReferenceId": null,
+        "message": "O licenciamento para máquinas virtuais Windows Server deve utilizar o licenciamento AHB"
+      }
+    ]
+  },
+  "assignment": {
+    "name": "105d5f7eafa6496f997b0ff5",
+    "displayName": "[RES-SOLO-2] Exigir o uso do beneficio do licenciamento hibrido",
+    "description": ""
+  },
+  "metadata": {
+    "parameterScopes": {}
+  },
+  "overrides": [],
+  "resourceSelectors": [],
+  "scope": {
+    "epac-dev": [
+      "/subscriptions/47fae178-5515-4959-86d9-b5e380009545"
+    ]
+  },
+  "definitionVersion": "1.*.*"
+}
